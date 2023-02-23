@@ -1,56 +1,66 @@
-let userWeapon = prompt('rock paper or scissors?')
 
-        function getComputerChoice() { 
-            const randomNumber = Math.floor(Math.random() * 3)
+let playerScore = 0;
+let computerScore = 0;
+let tie = 0;
 
-            switch(randomNumber) {
-                case 0:
-                    return 'rock'
-                    break;
-                case 1:
-                    return 'paper'
-                    break;
-                case 2: 
-                    return 'scissors'
-            }
-          
-        }
+let gamePlay = () => {
+   for (let i = 0; i < 5; i++) {
+      let getComputerChoice = () => { 
+         const randomNumber = Math.floor(Math.random() * 3)
+         switch(randomNumber) {
+            case 0:
+               return 'ROCK';
+            case 1:
+               return 'PAPER';
+            case 2: 
+               return 'SCISSORS';
+         }
+      }      
+      let playRound = (playerSelection,computerSelection) => {
+         const win = (playerSelection === 'ROCK') && (computerSelection === 'SCISSORS') || (playerSelection === 'SCISSORS') && (computerSelection === 'PAPER') || (playerSelection === 'PAPER') && (computerSelection === 'ROCK')
+         if (playerSelection === computerSelection) {
+            tie++;
+            console.log("IT'S A TIE");
+         }
+         else if (win) {
+            playerScore++;
+            console.log('YOU WON');
+         }
+         else {
+            computerScore++;
+            console.log('YOU LOST');
+         }
+      }
 
-        let computerSelection = getComputerChoice;
+      let player = prompt('choose your weapon');
+      const playerSelection = player.toUpperCase();
+      const computerSelection = getComputerChoice();
+      console.log(`computer choose:${computerSelection}`)
+      console.log(`player choose: ${playerSelection}`)
+
+      console.log(playRound(playerSelection,computerSelection))
+   }
+}
+
+gamePlay()
+
+
+console.log(`PLAYER:${playerScore}`)
+console.log(`COMPUTER:${computerScore}`)
+console.log(`TIE:${tie}`)
+
+let playAgain = prompt('Would you dare to play the game again?','yes')
+
+if (playAgain === 'yes') {
+   gamePlay()
+}
+else if (playAgain) {
+   alert('pack you')
+}
+
+
+
+
+
         
-
-        function playRound(playerSelection, computerSelection) {        
-             if ((playerSelection === 'paper') && (computerSelection === 'rock')) {
-                return 'you win!!!';
-             } else if ((playerSelection === 'rock') && (computerSelection === 'scissors')) {
-                return 'you win!!!';
-             } else if ((playerSelection === 'scissors') && (computerSelection === 'paper')) {
-                return 'you win!!!';
-
-             } else if ((computerSelection === 'paper') && (playerSelection === 'scissors')) {
-                return 'You lose!!!';
-             } else if ((computerSelection === 'scissors') && (playerSelection === 'rock')) {
-                return 'You lose!!!';
-             } else if ((computerSelection === 'rock') && (playerSelection === 'scissors')) {
-                return 'You lose!!!';
-             }  
-        }   
-        
-        function playRoundTie(playerSelection, computerSelection) {
-
-             if ((playerSelection === 'rock') && (computerSelection === 'rock')) {
-                return 'it/s a tie';   
-             } else if ((playerSelection === 'paper') && (computerSelection === 'paper')) {
-                return 'it/s a tie';
-             } else if ((playerSelection === 'scissors') && (computerSelection === 'scissors')) {
-                return 'it/s a tie';
-             } 
-            
-        }
-
-        function game() {
-            for(let i = 1; i >= 5; i++) {        
-            
-            }
-        }
-            
+         
