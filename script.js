@@ -60,20 +60,31 @@ function resultbutton () {
    compScoreSelect.innerHTML = `COMPUTER:${computerScore}`;
    tieScoreSelect.innerHTML = `TIE:${tie}`;
 
-   if (playerScore + computerScore + tie === 5) {
+   if (playerScore + computerScore + tie === 6) {
       if (playerScore > computerScore) {
-         playerScore = 0;
-         computerScore = 0;
-         tie = 0;
+         result.innerText = 'YOU ARE THE WINNER';
          alert('YOU ARE THE WINNER');
-         return;
-      }
-      else {
+         alert('CHOOSE AGAIN FOR ANOTHER ROUND');
          playerScore = 0;
          computerScore = 0;
          tie = 0;
+         return;  
+      } else if (playerScore < computerScore){
+         result.innerText = 'YOU ARE THE LOSER';
          alert('YOU ARE THE LOSER');
+         alert('CHOOSE AGAIN FOR ANOTHER ROUND')
+         playerScore = 0;
+         computerScore = 0;
+         tie = 0;
          return;
+      } else if (playerScore === computerScore) {
+         playerScore = 0;
+         computerScore = 0;
+         tie = 0;
+         result.innerText = 'BOTH TIE';
+         alert('BOTH PLAYER AND COMPUTER IS TIE');
+         alert('CHOOSE AGAIN FOR ANOTHER ROUND');
+         return;  
       }
    }
 }

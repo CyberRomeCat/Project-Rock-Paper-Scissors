@@ -1,0 +1,33 @@
+.btns {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 220px;
+}
+
+.display {
+    margin-top: 100px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+button {
+    flex-grow: 3;
+    height: 100px;
+    width: 950px;
+    border-width: 10px;
+    border-color: yellow;
+}
+
+.result {
+    font-size:x-large;
+    font-weight: 50;
+    margin-bottom: 10px;
+}
+
+.computer {
+    margin-bottom: 10px;
+}
